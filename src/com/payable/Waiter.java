@@ -26,7 +26,12 @@ public class Waiter implements PayableWithTip {
         return paid - amount;
     }
 
-    public void receiveOrder(Scanner customerInput, Map<Double, Integer> order_amount, Restaurant restaurant) {
+    @Override
+    public double getTax(Map<String, Double> stateTax, String state) {
+        return stateTax.get(state);
+    }
+
+    public void receiveOrder(Scanner customerInput, Map<Double, Integer> order_amount, Restaurant restaurant, String state) {
         boolean checkout = false;
         int customerNum;
         double customerDou;
@@ -49,12 +54,11 @@ public class Waiter implements PayableWithTip {
                 customerDou = customerInput.nextDouble();
                 customerInput.nextLine();
                 double priceWithTip = this.addTip(originalPrice, customerDou);
-                System.out.println("Final price: " + priceWithTip);
+                System.out.format("Final price: %.2f\n", priceWithTip);
                 System.out.print("Enter the amount you want to pay in cash: ");
                 customerDou = customerInput.nextDouble();
                 customerInput.nextLine();
-                System.out.println("The change is " + this.payBill(customerDou, priceWithTip) +
-                        ". Bye!");
+                System.out.format("The change is %.2f\nBye!", this.payBill(customerDou, priceWithTip));
                 checkout = true;
             }
         }

@@ -26,6 +26,7 @@ public class Test {
     public static void main(String[] args) {
         Scanner customerInput = new Scanner(System.in);
         Restaurant restaurant;
+        String state;
         int customerNum;
 
         welcomeMessage();
@@ -36,8 +37,9 @@ public class Test {
             case 1:
                 restaurant = new SitDown();
                 Waiter waiter = new Waiter();
+                state = restaurant.getState(customerInput);
                 restaurant.showMenu();
-                waiter.receiveOrder(customerInput, order_amount, restaurant);
+                waiter.receiveOrder(customerInput, order_amount, restaurant, state);
                 break;
             case 2:
                 restaurant = new EatAndGo();

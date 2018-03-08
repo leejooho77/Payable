@@ -8,5 +8,8 @@ public class EatAndGo extends Restaurant {
         super.addFoodToMenu("Chicken Nugget", 4.99);
         super.addFoodToMenu("Fries", 0.99);
         super.addFoodToMenu("Drink", 1.99);
+        super.addFoodToMenu("Combo 1: Cheeseburger, Fries, Drink", 2.97);
+        super.addFoodToMenu("Combo 2: Chicken Sandwich, Fries, Drink", 4.97);
+        super.addFoodToMenu("Combo 3: Chicken Nugget, Fries, Drink", 5.97);
     }
 }
